@@ -65,7 +65,7 @@ st.markdown("""As AI handles the technical day-to-day, human skills matter more 
 
 
 # Initialize the ChatOpenAI model
-llm = ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo", streaming = True)
+llm = ChatOpenAI(temperature=0.5, model_name="gpt-4o", streaming = True)
 
 # Specify session_state key for storing messages
 msgs = StreamlitChatMessageHistory(key="special_app_key")
