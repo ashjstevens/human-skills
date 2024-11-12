@@ -6,7 +6,6 @@ import numpy as np
 from dotenv import load_dotenv
 from itertools import zip_longest
 from streamlit_chat import message
-from langchain_community.chat_models import ChatOpenAI
 from langchain.schema import (
     SystemMessage,
     HumanMessage,
@@ -71,9 +70,6 @@ llm = ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo", streaming = True)
 # Specify session_state key for storing messages
 msgs = StreamlitChatMessageHistory(key="special_app_key")
 
-#if len(msgs.messages) == 0:
-    #st.chat_message("ai", avatar = "🤖").write("What can I help you with today?")
-
 
 prompt = ChatPromptTemplate.from_messages(
     [
@@ -93,7 +89,10 @@ chain_with_history = RunnableWithMessageHistory(
 )
 
 for msg in msgs.messages:
-    st.chat_message(msg.type).write(msg.content)
+    if msg.type == "human":
+        st.chat_message(msg.type, avatar = "🧑‍💻").write(msg.content)
+    elif msg.type == "ai":
+        st.chat_message(msg.type, avatar = "🤖").write(msg.content)
 
 if prompt := st.chat_input("Ask me what I can help you with!"):
     st.chat_message("human", avatar = "🧑‍💻").write(prompt)
@@ -106,6 +105,6 @@ if prompt := st.chat_input("Ask me what I can help you with!"):
 
 # Add credit
 with st.sidebar:
-    st.markdown('''Made with 💖 by Ash Stevens
-    Code at 
+    st.markdown('''Made with 💖 by Ash Stevens  
+    https://github.com/ashjstevens/human-skills
     ''')
