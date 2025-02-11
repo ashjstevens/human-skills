@@ -1,7 +1,9 @@
-# requirements.txt
 streamlit
-langchain
-openai
-faiss-cpu
 python-dotenv
 streamlit-chat
+langchain
+langchain-community
+langchain-core
+langchain-openai
+faiss-cpu
+openai
