@@ -16,7 +16,6 @@ from langchain.schema import (
 )
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import OpenAIEmbeddings
